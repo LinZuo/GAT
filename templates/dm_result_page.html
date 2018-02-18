@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="{{ url_for('static', filename='jquery-1.11.1.min.js') }}"></script>
+  <meta charset="UTF-8">
+  <title>Decision Making Results</title>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      setTimeout(getUpdate, 1000);
+    });
+
+    function getUpdate() {
+      $.ajax({
+        url: "{{ url_for('dm_blueprint.dm_progress', case_num=case_num) }}",
+        dataType: 'json',
+        traditional: true,
+        success: function (data) {
+          $("#output").empty();
+          var sentences = [];
+          for (var i = 0; i < data.length; i++) {
+            sentences.push(data[data.length - i]);
+          }
+
+          sentencesAppended = sentences.join("\n");
+          $("#output").append(sentencesAppended);
+          if (String(sentences[-1]) == "###ALL FINISHED###") {
+            console.log(sentences[-1]);
+            return;
+          }
+        }
+      });
+      setTimeout(getUpdate, 1000);
+    }
+  </script>
+</head>
+<body>
+<textarea
+    readonly
+    name="decision_making_output"
+    id="output"
+    rows="10"
+    cols="70"
+    style="display:inline; overflow-y: scroll;">
+</textarea>
+</body>
+</html>

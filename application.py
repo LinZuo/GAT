@@ -14,6 +14,7 @@ from gat.view.visualize import visualize_blueprint
 from gat.view.out import out_blueprint
 from gat.view.smart_search import smart_search_blueprint
 from gat.view.nlp import nlp_blueprint
+from gat.view.decision_making import dm_blueprint
 
 ''' Before running:
         Make sure you have flask and jinja2 installed
@@ -80,6 +81,8 @@ application.register_blueprint(gsa_blueprint)
 application.register_blueprint(out_blueprint)
 application.register_blueprint(smart_search_blueprint)
 application.register_blueprint(nlp_blueprint)
+application.register_blueprint(dm_blueprint)
+
 
 #################
 #### Running ####
