@@ -23,7 +23,7 @@ def calculate_risks(end_state, moves):
 
 
 def resource_encoding(resourcesCategories):
-    f = open("resource_vocab.txt", "r")
+    f = open("static/resources/dm_data/resource_vocab.txt", "r")
     resource_vocab = f.readlines()
     f.close()
     vocab_map_indices = {}

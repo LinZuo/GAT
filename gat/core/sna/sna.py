@@ -88,6 +88,7 @@ class SNA():
                         self.changeAttribute(nodeID, attrList, attrID)
 
                 prevCell = cell # save cell in case of subattribute data
+        self.role_actors_list = []
 
         ## Role Strategies Section ##
         # pseudocode for role strategies attribute loading:
@@ -103,6 +104,8 @@ class SNA():
         #                 if cell['val'] != '':
         #                     attrDict[cell['header']] = cell['val']
         #             node[classname] = attrDict # add an attribute dict titled by classname, e.g. "SA", with info from row
+
+                    self.role_actors_list.append(role_actor(.... parameters))
 
     def createEdgeList(self, sourceSet):
         list = self.list
@@ -488,6 +491,8 @@ class SNA():
         self.drag_predict()
 
     def event_update(self, event_sheet, max_iter):
+        #for every actor in role_acotrsl_list
+        #do the move update
         df = pd.read_excel(event_sheet)
         bombData = df.to_dict(orient='index')
         for x in range(0, len(bombData)):

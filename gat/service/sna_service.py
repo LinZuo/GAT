@@ -94,6 +94,10 @@ def SNA2Dand3D(graph, request, case_num, _3D=True, _2D=False, label=False):
         graph.addNode(node, attrDict, links)
 
     if request.form.get("eventSubmit") != None:
+
+
+        # list of all role_actors
+        # each actor acts
         fileDict['SNA_Events'] = 'static/sample/sna/suicide_attacks_subset.xlsx' ##TODO add a blueprint route for event sheet here
         inputFile = fileDict['SNA_Events']
         iters = int(request.form.get("iters"))
